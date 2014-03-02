@@ -31,13 +31,15 @@ method string($/) {
 method string:dbqt ($/) { make self.string($/) }
 method string:apos ($/) { make self.string($/) }
 
-method value:sym<number>($/) { make +$/.Str }
-method value:sym<string>($/) { make $<string>.ast }
+method value:number:int ($/) { make $/.Str.Int }
+method value:number:num ($/) { make $/.Str.Num }
+method value:number:exp ($/) { make "$<num>e$<exp>".Num }
+method value:string ($/) { make $<string>.ast }
+method value:object ($/) { make $<object>.ast }
+method value:array  ($/) { make $<array>.ast }
 method value:sym<true>($/)   { make Bool::True  }
 method value:sym<false>($/)  { make Bool::False }
 method value:sym<null>($/)   { make Any }
-method value:sym<object>($/) { make $<object>.ast }
-method value:sym<array>($/)  { make $<array>.ast }
 
 method str($/)               { make ~$/ }
 

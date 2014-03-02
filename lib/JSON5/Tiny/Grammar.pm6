@@ -9,18 +9,31 @@ rule array      { '[' ~ ']' <arraylist>    }
 rule arraylist  {  <value> * %% [ \, ]      }
 
 proto token value {*};
-token value:sym<number> {
-    '-'?
-    [ 0 | <[1..9]> <[0..9]>* ]
-    [ \. <[0..9]>+ ]?
-    [ <[eE]> [\+|\-]? <[0..9]>+ ]?
+token value:object  { <object> };
+token value:array   { <array>  };
+token value:string  { <string> }
+token value:number:int {
+    '-'? [ 0 | <[1..9]> <[0..9]>* ]
 }
-token value:sym<true>    { <sym>    };
-token value:sym<false>   { <sym>    };
-token value:sym<null>    { <sym>    };
-token value:sym<object>  { <object> };
-token value:sym<array>   { <array>  };
-token value:sym<string>  { <string> }
+token value:number:num {
+    '-'?
+    [ 0 | <[1..9]> <[0..9]>* ]?
+    \.
+    <[0..9]>*
+}
+token value:number:exp {
+    $<num>=[
+      '-'?
+      [ 0 | <[1..9]> <[0..9]>* ]?
+      \.
+      <[0..9]>*
+    ]
+    <[eE]>
+    $<exp>=[ [\+|\-]? <[0..9]>+ ]
+}
+token value:sym<true>  { <sym> };
+token value:sym<false> { <sym> };
+token value:sym<null>  { <sym> };
 
 token key { <string> | <js-ident> }
 
