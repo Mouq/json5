@@ -35,7 +35,7 @@ method string:apos ($/) { make self.string($/) }
 # when Rakudo supports it
 method value:int ($/) { make $/.Str.Int }
 method value:num ($/) { make $/.Str.Num }
-method value:exp ($/) { make "$<num>e$<exp>".Num }
+method value:exp ($/) { make "$0e$1".Num }
 method value:inf ($/) { make $/.substr(0,*-5).Num }
 method value:hex ($/) { make $/.Str.Int }
 

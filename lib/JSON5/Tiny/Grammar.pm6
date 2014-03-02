@@ -22,14 +22,13 @@ token value:num     {
     <[0..9]>*
 }
 token value:exp     {
-    $<num>=[
+    ( # TODO: <value:int> | <value:num> when Rakudo supports it
       <[+-]>?
       [ 0 | <[1..9]> <[0..9]>* ]?
-      \.
-      <[0..9]>*
-    ]
+      [ \. <[0..9]>* ]?
+    )
     <[eE]>
-    $<exp>=[ <[+-]>? <[0..9]>+ ]
+    ( <[+-]>? <[0..9]>+ )
 }
 token value:inf     { <[+-]>? Infinity }
 token value:hex     { 0x <[a..zA..Z0..9]>+ }

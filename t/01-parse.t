@@ -151,6 +151,7 @@ break"]>>,
     Q<<{unquoted_key: "js-idents don't have to be quoted"}>>,
     Q<<["extra comma",]>>,
     Q<<{"Extra comma": true,}>>,
+    Q<<{"Numbers can be hex": 0x14}>>,
     ;
 
 my @n =
@@ -164,7 +165,6 @@ my @n =
     Q<<{"Illegal expression": 1 + 2}>>,
     Q<<{"Illegal invocation": alert()}>>,
     Q<<{"Numbers cannot have leading zeroes": 013}>>,
-    Q<<{"Numbers cannot be hex": 0x14}>>,
     Q<<["Illegal backslash escape: \x15"]>>,
     Q<<[\naked]>>,
     Q<<["Illegal backslash escape: \017"]>>,
