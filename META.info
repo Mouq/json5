@@ -1,8 +1,8 @@
 {
-    "name"        : "JSON::Tiny",
+    "name"        : "JSON5::Tiny",
     "version"     : "*",
-    "description" : "A minimal JSON (de)serializer",
+    "description" : "A JSON::Tiny fork for JSON5",
     "depends"     : [ ],
-    "source-url"  : "git://github.com/moritz/json.git"
+    "source-url"  : "git://github.com/Mouq/json5.git"
 }
 
