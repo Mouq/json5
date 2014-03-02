@@ -31,9 +31,14 @@ method string($/) {
 method string:dbqt ($/) { make self.string($/) }
 method string:apos ($/) { make self.string($/) }
 
-method value:number:int ($/) { make $/.Str.Int }
-method value:number:num ($/) { make $/.Str.Num }
-method value:number:exp ($/) { make "$<num>e$<exp>".Num }
+# TODO Should be value:number:int, etc
+# when Rakudo supports it
+method value:int ($/) { make $/.Str.Int }
+method value:num ($/) { make $/.Str.Num }
+method value:exp ($/) { make "$<num>e$<exp>".Num }
+method value:inf ($/) { make $/.substr(0,*-5).Num }
+method value:hex ($/) { make $/.Str.Int }
+
 method value:string ($/) { make $<string>.ast }
 method value:object ($/) { make $<object>.ast }
 method value:array  ($/) { make $<array>.ast }

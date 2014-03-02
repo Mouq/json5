@@ -12,25 +12,27 @@ proto token value {*};
 token value:object  { <object> };
 token value:array   { <array>  };
 token value:string  { <string> }
-token value:number:int {
-    '-'? [ 0 | <[1..9]> <[0..9]>* ]
-}
-token value:number:num {
-    '-'?
+# TODO: When Rakudo supports it, these
+# should really be value:number:int, etc
+token value:int     { <[+-]>? [ 0 | <[1..9]> <[0..9]>* ] }
+token value:num     {
+    <[+-]>?
     [ 0 | <[1..9]> <[0..9]>* ]?
     \.
     <[0..9]>*
 }
-token value:number:exp {
+token value:exp     {
     $<num>=[
-      '-'?
+      <[+-]>?
       [ 0 | <[1..9]> <[0..9]>* ]?
       \.
       <[0..9]>*
     ]
     <[eE]>
-    $<exp>=[ [\+|\-]? <[0..9]>+ ]
+    $<exp>=[ <[+-]>? <[0..9]>+ ]
 }
+token value:inf     { <[+-]>? Infinity }
+token value:hex     { 0x <[a..zA..Z0..9]>+ }
 token value:sym<true>  { <sym> };
 token value:sym<false> { <sym> };
 token value:sym<null>  { <sym> };
