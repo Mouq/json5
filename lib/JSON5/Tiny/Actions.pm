@@ -12,7 +12,7 @@ method pairlist($/) {
 }
 
 method pair($/) {
-    make $<string>.ast => $<value>.ast;
+    make $<key>.ast => $<value>.ast;
 }
 
 method array($/) {
@@ -23,11 +23,14 @@ method arraylist($/) {
     make [$<value>>>.ast];
 }
 
+method key ($/) { make $<js-ident> ?? ~$/ !! $<string>.ast }
+
 method string($/) {
-    make +@$<str> == 1
-        ?? $<str>[0].ast
-        !! $<str>>>.ast.join;
+    $<str>.map({.ast // .Str}).join;
 }
+method string:dbqt ($/) { make self.string($/) }
+method string:apos ($/) { make self.string($/) }
+
 method value:sym<number>($/) { make +$/.Str }
 method value:sym<string>($/) { make $<string>.ast }
 method value:sym<true>($/)   { make Bool::True  }

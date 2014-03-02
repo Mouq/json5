@@ -31,14 +31,14 @@ token string:dbqt {
     \" ~ \"
     [
     | <str>                | $<str>=\'
-    | \\ <str=.str_escape> | $<str>=[\\ \"]
+    | \\ [ <str=.str_escape> | $<str>=\" ]
     ]*
 }
 token string:apos {
     \' ~ \'
     [
     | <str>                | $<str>=\"
-    | \\ <str=.str_escape> | $<str>=[\\ \']
+    | \\ [ <str=.str_escape> | $<str>=\' ]
     ]*
 }
 
