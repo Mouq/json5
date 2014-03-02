@@ -1,22 +1,22 @@
 # =begin Pod
 # 
-# =head1 JSON::Tiny
+# =head1 JSON5::Tiny
 # 
-# C<JSON::Tiny> is a minimalistic module that reads and writes JSON.
+# C<JSON5::Tiny> is a minimalistic module that reads and writes JSON.
 # It supports strings, numbers, arrays and hashes (no custom objects).
 # 
 # =head1 Synopsis
 # 
-#     use JSON::Tiny;
+#     use JSON5::Tiny;
 #     my $json = to-json([1, 2, "a third item"]);
 #     my $copy-of-original-data-structure = from-json($json);
 # 
 # =end Pod
 
-module JSON::Tiny;
+module JSON5::Tiny;
 
-use JSON::Tiny::Actions;
-use JSON::Tiny::Grammar;
+use JSON5::Tiny::Actions;
+use JSON5::Tiny::Grammar;
 
 proto to-json($) is export {*}
 
@@ -46,8 +46,8 @@ multi to-json(Mu:D $s) {
 }
 
 sub from-json($text) is export {
-    my $a = JSON::Tiny::Actions.new();
-    my $o = JSON::Tiny::Grammar.parse($text, :actions($a));
+    my $a = JSON5::Tiny::Actions.new();
+    my $o = JSON5::Tiny::Grammar.parse($text, :actions($a));
     return $o.ast;
 }
 # vim: ft=perl6

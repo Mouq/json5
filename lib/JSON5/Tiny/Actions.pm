@@ -1,4 +1,4 @@
-class JSON::Tiny::Actions;
+class JSON5::Tiny::Actions;
 
 method TOP($/) {
     make $/.values.[0].ast;

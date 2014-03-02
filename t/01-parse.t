@@ -1,7 +1,7 @@
 use v6;
 BEGIN { @*INC.push('lib') };
 
-use JSON::Tiny::Grammar;
+use JSON5::Tiny::Grammar;
 use Test;
 
 my @t =
@@ -200,7 +200,7 @@ for @t -> $t {
     }
     my $parsed = 0;
     try {
-        JSON::Tiny::Grammar.parse($t)
+        JSON5::Tiny::Grammar.parse($t)
             and $parsed = 1;
     }
     ok $parsed, "JSON string «$desc» parsed";
@@ -213,7 +213,7 @@ for @n -> $t {
         $desc .= subst(/\n.*$/, "\\n...[$i]");
     }
     my $parsed = 0;
-    try { JSON::Tiny::Grammar.parse($t) and $parsed = 1 };
+    try { JSON5::Tiny::Grammar.parse($t) and $parsed = 1 };
     nok $parsed, "NOT parsed «$desc»";
     $i++;
 }
