@@ -1,12 +1,21 @@
 use v6;
 grammar JSON5::Tiny::Grammar;
 
-token TOP       { ^ \s* [ <object> | <array> ] \s* $ }
-rule object     { '{' ~ '}' <pairlist>     }
-rule pairlist   { <pair> * %% \,           }
-rule pair       { <key> ':' <value>        }
-rule array      { '[' ~ ']' <arraylist>    }
-rule arraylist  {  <value> * %% [ \, ]      }
+rule TOP        { ^ [ <object> | <array> ] $ }
+rule object     { '{' ~ '}' <pairlist>       }
+rule pairlist   { <pair> * %% \,             }
+rule pair       { <key> ':' <value>          }
+rule array      { '[' ~ ']' <arraylist>      }
+rule arraylist  {  <value> * %% [ \, ]       }
+
+token ws { [ \s+ | <comment> ]* }
+proto token comment {*};
+token comment:line  {
+    '//' \N*
+}
+token comment:block {
+    '/*' <!before '*/'> . '*/'
+}
 
 proto token value {*};
 token value:object  { <object> };
