@@ -14,7 +14,7 @@ token comment:line  {
     '//' \N*
 }
 token comment:block {
-    '/*' <!before '*/'> . '*/'
+    '/*' [ <!before '*/'> . ]* '*/'
 }
 
 proto token value {*};
