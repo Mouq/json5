@@ -3,7 +3,7 @@ use v6;
 
 =head1 JSON5::Tiny
 
-C<JSON5::Tiny> is a minimalistic module that reads and writes JSON.
+C<JSON5::Tiny> is a minimalistic module that reads and writes JSON5.
 It supports strings, numbers, arrays and hashes (no custom objects).
 
 =head1 Synopsis

@@ -12,7 +12,9 @@ Missing features:
  * Correct handling and tests for surrogate pairs
  * Detection of cycles in input data structures (might never be fixed)
 
-Credits
+Credits for JSON::Tiny
     Moritz Lenz <moritz@faui2k3.org>
     Johan Viklund
     Jonathan Worthington
+
+Alexander Moquin (Mouq) added the JSON5 features.
