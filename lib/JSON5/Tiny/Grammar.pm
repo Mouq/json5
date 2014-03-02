@@ -24,7 +24,7 @@ token value:sym<string>  { <string> }
 
 token key { <string> | <js-ident> }
 
-token js-ident { <:alpha+[_$]> <:alpha+[_$]+[0..9]> }
+token js-ident { <:alpha+[_$]> <:alpha+[_$]+[0..9]>* }
 
 proto token string {*}
 token string:dbqt {
@@ -43,11 +43,11 @@ token string:apos {
 }
 
 token str {
-    <-[\\\t\n]>+
+    <-['"\\\t\n]>+
 }
 
 token str_escape {
-    <[\\/bfnrt\n]> | u <xdigit>**4
+    <['"\\/bfnrt\n]> | u <xdigit>**4
 }
 
 # vim: ft=perl6
