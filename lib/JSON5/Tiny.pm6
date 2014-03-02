@@ -1,17 +1,18 @@
-# =begin Pod
-# 
-# =head1 JSON5::Tiny
-# 
-# C<JSON5::Tiny> is a minimalistic module that reads and writes JSON.
-# It supports strings, numbers, arrays and hashes (no custom objects).
-# 
-# =head1 Synopsis
-# 
-#     use JSON5::Tiny;
-#     my $json = to-json([1, 2, "a third item"]);
-#     my $copy-of-original-data-structure = from-json($json);
-# 
-# =end Pod
+use v6;
+=begin pod
+
+=head1 JSON5::Tiny
+
+C<JSON5::Tiny> is a minimalistic module that reads and writes JSON.
+It supports strings, numbers, arrays and hashes (no custom objects).
+
+=head1 Synopsis
+
+    use JSON5::Tiny;
+    my $json = to-json([1, 2, "a third item"]);
+    my $copy-of-original-data-structure = from-json($json);
+
+=end pod
 
 module JSON5::Tiny;
 

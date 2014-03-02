@@ -1,3 +1,4 @@
+use v6;
 class JSON5::Tiny::Actions;
 
 method TOP($/) {
