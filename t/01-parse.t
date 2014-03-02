@@ -145,6 +145,12 @@ my @t =
         "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
     }
 }}>>,
+    Q<<['single quote']>>,
+    Q<<["line\
+break"]>>,
+    Q<<{unquoted_key: "js-idents don't have to be quoted"}>>,
+    Q<<["extra comma",]>>,
+    Q<<{"Extra comma": true,}>>,
     ;
 
 my @n =
@@ -170,24 +176,19 @@ my @n =
     Q<<{"Comma instead of colon", null}>>,
     Q<<["Colon instead of comma": false]>>,
     Q<<["Bad value", truth]>>,
-    Q<<['single quote']>>,
     qq<["\ttab\tcharacter	in	string	"]>,
     Q<<["line
 break"]>>,
-    Q<<["line\
-break"]>>,
     Q<<[0e]>>,
-    Q<<{unquoted_key: "keys must be quoted"}>>,
+    Q<<{1unquoted_key: "non-ident keys must be quoted"}>>,
     Q<<[0e+]>>,
     Q<<[0e+-1]>>,
     Q<<{"Comma instead if closing brace": true,>>,
     Q<<["mismatch"}>>,
-    Q<<["extra comma",]>>,
     Q<<["double extra comma",,]>>,
     Q<<[   , "<-- missing value"]>>,
     Q<<["Comma after the close"],>>,
     Q<<["Extra close"]]>>,
-    Q<<{"Extra comma": true,}>>,
 ;
 
 plan (+@t) + (+@n);
