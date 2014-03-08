@@ -34,11 +34,11 @@ method string:apos ($/) { make self.string($/) }
 
 # TODO Should be value:number:int, etc
 # when Rakudo supports it
-method value:int ($/) { make $/.Str.Int }
-method value:num ($/) { make $/.Str.Num }
-method value:exp ($/) { make "$0e$1".Num }
-method value:inf ($/) { make $/.substr(0,*-5).Num }
-method value:hex ($/) { make $/.Str.Int }
+method value:int ($/) { make +$/.Str }
+method value:num ($/) { make +$/.Str }
+method value:exp ($/) { make +"$0e$1" }
+method value:inf ($/) { make +$/.substr(0,*-5) }
+method value:hex ($/) { make +$/.Str }
 
 method value:string ($/) { make $<string>.ast }
 method value:object ($/) { make $<object>.ast }
