@@ -196,7 +196,7 @@ plan (+@t) + (+@n);
 my $i = 0;
 for @t -> $t {
     my $desc = $t;
-    if $desc ~~ m/\n/ {
+    if $desc ~~ /\n/ {
         $desc .= subst(/\n.*$/, "\\n...[$i]");
     }
     my $parsed = 0;
@@ -210,7 +210,7 @@ for @t -> $t {
 
 for @n -> $t {
     my $desc = $t;
-    if $desc ~~ m/\n/ {
+    if $desc ~~ /\n/ {
         $desc .= subst(/\n.*$/, "\\n...[$i]");
     }
     my $parsed = 0;
